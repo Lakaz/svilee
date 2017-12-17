@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "813637701338",
+    "firebase_url": "https://socialexchange-a7a20.firebaseio.com",
+    "project_id": "socialexchange-a7a20",
+    "storage_bucket": "socialexchange-a7a20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813637701338:android:4725d2db29952fb0",
+        "android_client_info": {
+          "package_name": "com.mobiwarez.laki.seapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813637701338-nlijhhr8fvunud6f6r4hutjq14fp914g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobiwarez.laki.seapp",
+            "certificate_hash": "46bcb2d117403dda24722b70cea3b2fb549d9af5"
+          }
+        },
+        {
+          "client_id": "813637701338-d4n250f1hil1f1eh3hl6n00i1b5m6jk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobiwarez.laki.seapp",
+            "certificate_hash": "533334f84d64886e7448f751d83de4712172a2c9"
+          }
+        },
+        {
+          "client_id": "813637701338-klurmpqafa93i3tbuu7i5b720fabsfmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvlwGF4oOomrizdi1L-TaRNpBY-qDlMYg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813637701338-klurmpqafa93i3tbuu7i5b720fabsfmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

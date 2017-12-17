@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">sVill</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_show_zone">Map</string>
+    <string name="title_activity_dash_board">sVill</string>
+    <string name="title_activity_new_to">NewToActivity</string>
+
+    <string-array name="category_array">
+        <item>All</item>
+        <item>Arts and Craft</item>
+        <item>Books</item>
+        <item>Boys Clothes</item>
+        <item>Girls Clothes</item>
+        <item>Kids Decor</item>
+        <item>Meal Times</item>
+        <item>Toys and Games</item>
+    </string-array>
+
+    <string-array name="age_group_array">
+        <item>All</item>
+        <item>Baby: 0 to 2 years</item>
+        <item>Toddler: 3 to 5 years</item>
+        <item>Kid: 5 years+</item>
+    </string-array>
+    <string name="title_activity_shared_toys">SharedToysActivity</string>
+    <string name="title_activity_item_list">ItemListActivity</string>
+    <string name="title_activity_sign_in">sVill</string>
+    <string name="unknown_response">Signing in failed</string>
+    <string name="sign_in_cancelled">Sign in cancelled</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="unknown_sign_in_response">An error occurred</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="title_fire_chat">Chat</string>
+    <string name="title_activity_contacts">Contacts</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_received_toys">Items you received</string>
+    <string name="title_activity_image_detail">ImageDetailActivity</string>
+    <string name="full_image_description">item full image</string>
+    <string name="title_activity_search_set_up">sVill</string>
+</resources>

@@ -1,0 +1,29 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'java'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+buildscript {
+    ext.kotlin_version = '1.1.51'
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+dependencies {
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+    implementation 'com.annimon:stream:' + project.ext.streamsVersion
+}
+repositories {
+    mavenCentral()
+}

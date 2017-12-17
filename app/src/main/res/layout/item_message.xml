@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:id="@+id/others"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_alignParentLeft="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/messengerImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_account_circle_black_36dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:background="@drawable/fin_bubble"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/messageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:text="Come lets jog" />
+
+            <ImageView
+                android:id="@+id/messageImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@color/colorPrimary"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/messengerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="Foya" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_alignParentRight="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fout_bubble"
+            android:gravity="center_vertical"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/mymessageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                tools:text="Come lets jog" />
+
+            <ImageView
+                android:id="@+id/mymessageImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@color/colorPrimary"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/mymessengerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                tools:text="Foya" />
+
+
+        </LinearLayout>
+
+        <!--Ide.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mymessengerImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_account_circle_black_36dp" /-->
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mobiwarez.laki.seapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <application
+        android:name=".dagger.application.SeeAppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/launchicon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/launchicon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+
+
+        <!-- [START firebase_service] -->
+        <service android:name=".messaging.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name=".messaging.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ui.toys.showzone.ShowZoneActivity"
+            android:label="@string/title_activity_show_zone" />
+        <activity
+            android:name=".DashBoardActivity"
+            android:label="@string/title_activity_dash_board"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.chat.FireChatActivity"
+            android:label="@string/title_fire_chat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.toys.create.NewToActivity"
+            android:label="@string/title_activity_new_to"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.toys.sharedtoys.SharedToysActivity"
+            android:label="@string/title_activity_shared_toys"
+            android:parentActivityName=".DashBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobiwarez.laki.seapp.DashBoardActivity" />
+        </activity>
+        <activity
+            android:name=".ui.toys.list.ItemListActivity"
+            android:label="@string/title_activity_item_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.auth.SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".messaging.PushReceiverIntentService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".messaging.PushReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="0">
+                <action android:name="com.mobiwarez.sache.Messaging" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".messaging.PushIntentService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".job.AddReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.evernote.android.job.ADD_JOB_CREATOR" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ui.contacts.ContactsActivity"
+            android:label="@string/title_activity_contacts"
+            android:parentActivityName=".DashBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobiwarez.laki.seapp.DashBoardActivity" />
+        </activity>
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".DashBoardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobiwarez.laki.seapp.DashBoardActivity" />
+        </activity>
+        <activity
+            android:name=".ui.toys.receivedToys.ReceivedToysActivity"
+            android:label="@string/title_activity_received_toys"
+            android:parentActivityName=".DashBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobiwarez.laki.seapp.DashBoardActivity" />
+        </activity>
+        <activity
+            android:name=".ui.imageview.ImageDetailActivity"
+            android:label="@string/title_activity_image_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.toys.itemcategories.SearchSetUpActivity"
+            android:label="@string/title_activity_search_set_up"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".DashBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobiwarez.laki.seapp.DashBoardActivity" />
+
+        </activity>
+    </application>
+
+</manifest>
