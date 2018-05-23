@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 
@@ -61,6 +62,12 @@ public class ToyRepoImpl implements ToyRepository {
     @NotNull
     @Override
     public Single<List<Toy>> getToysFromLocal() {
+        return null;
+    }
+
+    @NotNull
+    @Override
+    public Observable<String> claimToy(@NotNull String toyId) {
         return null;
     }
 }

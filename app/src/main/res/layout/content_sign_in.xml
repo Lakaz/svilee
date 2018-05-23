@@ -58,7 +58,7 @@
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:alpha="0.8"
                     android:gravity="center_horizontal"
-                    android:text="sVill"
+                    android:text="sVille"
                     android:textColor="@color/colorGrey"
                     android:textSize="34sp"
                     android:textStyle="normal|bold" />

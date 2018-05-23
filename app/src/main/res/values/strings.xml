@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sVill</string>
+    <string name="app_name">sVille</string>
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -9,7 +9,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_show_zone">Map</string>
-    <string name="title_activity_dash_board">sVill</string>
+    <string name="title_activity_dash_board">sVille</string>
     <string name="title_activity_new_to">NewToActivity</string>
 
     <string-array name="category_array">
@@ -31,7 +31,7 @@
     </string-array>
     <string name="title_activity_shared_toys">SharedToysActivity</string>
     <string name="title_activity_item_list">ItemListActivity</string>
-    <string name="title_activity_sign_in">sVill</string>
+    <string name="title_activity_sign_in">sVille</string>
     <string name="unknown_response">Signing in failed</string>
     <string name="sign_in_cancelled">Sign in cancelled</string>
     <string name="no_internet_connection">No internet connection</string>
@@ -40,8 +40,10 @@
     <string name="title_fire_chat">Chat</string>
     <string name="title_activity_contacts">Contacts</string>
     <string name="title_activity_profile">Profile</string>
-    <string name="title_activity_received_toys">Items you received</string>
+    <string name="title_activity_received_toys">Gifts you received</string>
     <string name="title_activity_image_detail">ImageDetailActivity</string>
     <string name="full_image_description">item full image</string>
-    <string name="title_activity_search_set_up">sVill</string>
+    <string name="title_activity_search_set_up">sVille</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_accounts">AccountsActivity</string>
 </resources>

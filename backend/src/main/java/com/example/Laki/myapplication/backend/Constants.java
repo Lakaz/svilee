@@ -31,4 +31,20 @@ public class Constants {
 
     public static final String ENTITY_RECEIVED_ITEMS = "received_items";
     public static final String ENTITY_REACT_RECEIVED_ITEMS = "received_react_items";
+
+    public static final String ENTITY_COMMENT = "comment";
+    public static final String COMMENT_ID = "commentId";
+    public static final String COMMENTOR_NAME = "commentorName";
+    public static final String COMMENTED_NAME = "commentedName";
+    public static final String COMMENT = "theComment";
+    public static final String COMMENTOR_AVATAR_URL = "commentorAvatorUrl";
+    public static final String COMMENTED_UUID = "commentedUUID";
+    public static final String COMMENTED_AVATAR_URL = "commentedAvatarUrl";
+
+    public static final String ENTITY_RANK = "ranks";
+    public static final String RANKED_UUID = "uuid";
+    public static final String RANK_ASSIGNED = "assignedRank";
+    public static final String RANK_COUNT = "ranknumbers";
+    public static final String RANK_AGGREGATE = "rankAggregate";
+    public static final String RANK_TOTAL = "ranktotal";
 }

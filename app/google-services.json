@@ -15,19 +15,71 @@
       },
       "oauth_client": [
         {
-          "client_id": "813637701338-nlijhhr8fvunud6f6r4hutjq14fp914g.apps.googleusercontent.com",
+          "client_id": "813637701338-2ukuojkf57jiu5qf00sa54qbe9j47kon.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mobiwarez.laki.seapp",
-            "certificate_hash": "46bcb2d117403dda24722b70cea3b2fb549d9af5"
+            "certificate_hash": "1c33d36642c7d05d9c584d6a6e43d1535832f880"
           }
         },
         {
-          "client_id": "813637701338-d4n250f1hil1f1eh3hl6n00i1b5m6jk7.apps.googleusercontent.com",
+          "client_id": "813637701338-mppgm0uq56kj60ug0n38q3c6hmi4knoj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mobiwarez.laki.seapp",
-            "certificate_hash": "533334f84d64886e7448f751d83de4712172a2c9"
+            "certificate_hash": "c036e1be9ffbe1222c5688f88da112dde2c6af7d"
+          }
+        },
+        {
+          "client_id": "813637701338-klurmpqafa93i3tbuu7i5b720fabsfmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvlwGF4oOomrizdi1L-TaRNpBY-qDlMYg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813637701338-klurmpqafa93i3tbuu7i5b720fabsfmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813637701338:android:fa46ebadcdc36094",
+        "android_client_info": {
+          "package_name": "com.mobiwarez.laki.sville"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813637701338-l10v1hnsjo590ljsfagvc9rsk1khbihu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobiwarez.laki.sville",
+            "certificate_hash": "1c33d36642c7d05d9c584d6a6e43d1535832f880"
+          }
+        },
+        {
+          "client_id": "813637701338-qiukmqf9j9v9kugj52q91k3pl3prhqjk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobiwarez.laki.sville",
+            "certificate_hash": "c036e1be9ffbe1222c5688f88da112dde2c6af7d"
           }
         },
         {

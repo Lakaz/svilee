@@ -8,6 +8,12 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="Account" />
+
         <item
             android:id="@+id/nav_contacts"
             android:icon="@drawable/ic_people_black_24dp"
@@ -15,11 +21,11 @@
         <item
             android:id="@+id/nav_given_items"
             android:icon="@drawable/ic_shopping_basket_black_24dp"
-            android:title="Given Items" />
+            android:title="Gifts you offered" />
         <item
             android:id="@+id/nav_received_items"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Recieved Items" />
+            android:title="Received Gifts" />
 
         <item
             android:id="@+id/nav_exit"

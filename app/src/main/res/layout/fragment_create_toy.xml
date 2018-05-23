@@ -80,6 +80,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:padding="4dp"
+                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_add_location_black_24dp" />
@@ -116,7 +117,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:hint="Title"
+                        android:hint="Gift e.g Teddy Bear"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -129,60 +130,6 @@
                     </android.support.design.widget.TextInputLayout>
 
 
-                    <TextView
-                        android:id="@+id/toy_category"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:textSize="18sp"
-                        android:focusable="true"
-                        android:clickable="true"
-                        android:text="Select Item Category"
-                        app:layout_constraintTop_toBottomOf="@+id/titleInputLayout"
-                        tools:text="Select Item Category" />
-
-
-                    <View
-                        android:id="@+id/divider_line"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@android:color/darker_gray"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/toy_category" />
-
-                    <TextView
-                        android:id="@+id/toy_age_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="24dp"
-                        android:textSize="18sp"
-                        android:text="Select Age Group"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/divider_line" />
-
-
-                    <View
-                        android:id="@+id/divider_line2"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@android:color/darker_gray"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/toy_age_group" />
-
-
-
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/textInputLayout"
                         android:layout_width="match_parent"
@@ -190,12 +137,13 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:hint="Item Description"
+                        android:layout_marginTop="16dp"
+                        android:hint="Gift Description e.g A big brown teddy bear"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/divider_line2">
+                        app:layout_constraintTop_toBottomOf="@+id/titleInputLayout">
 
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/item_description"
@@ -236,7 +184,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:hint="Pick Up Location"
+                        android:hint="Your location"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -245,7 +193,8 @@
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/pick_up_location"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Acquiring location..."/>
 
                     </android.support.design.widget.TextInputLayout>
 

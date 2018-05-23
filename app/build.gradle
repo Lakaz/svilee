@@ -5,20 +5,24 @@ apply plugin: 'kotlin-kapt'
 android {
     signingConfigs {
         config {
-            keyAlias 'exchange'
+            //keyAlias 'exchange'
+            //keyPassword 'marthaJ4Wife'
+            //storeFile file('C:/Users/lakifoya/Documents/seeapp.jks')
+            //storePassword 'marthaJ4Wife'
+            keyAlias 'mable'
             keyPassword 'marthaJ4Wife'
-            storeFile file('C:/Users/lakifoya/Documents/seeapp.jks')
+            storeFile file('/Users/laki/Documents/svillestore/svillekey')
             storePassword 'marthaJ4Wife'
         }
     }
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "26.0.3"
     defaultConfig {
-        applicationId "com.mobiwarez.laki.seapp"
+        applicationId "com.mobiwarez.laki.sville"  //"com.mobiwarez.laki.seapp"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.03"
+        versionCode 8
+        versionName "1.08"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -37,6 +41,12 @@ android {
     aaptOptions {
         cruncherEnabled false
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             def requested = details.requested
@@ -50,6 +60,9 @@ android {
 }
 
 dependencies {
+    implementation('com.google.firebase:firebase-core:15.0.2', {
+        exclude group: 'com.google.android.gms'
+    })
     configurations.all {
         // OkHttp 3.5.0+ includes the websockets API, so we need this to prevent a conflict
         exclude module: 'commons-logging'
@@ -58,72 +71,97 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
 
     //play services
-    implementation 'com.google.android.gms:play-services-maps:11.0.4'
-    implementation 'com.google.android.gms:play-services-places:11.0.4'
+    implementation('com.google.android.gms:play-services-location:15.0.0', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation('com.google.android.gms:play-services-maps:15.0.1', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation('com.google.android.gms:play-services-places:15.0.0', {
+        exclude group: 'com.google.android.gms'
+    })
 
+    //prev version 11.o.4
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.firebase:firebase-auth:11.0.4'
-    implementation 'com.google.firebase:firebase-database:11.0.4'
-    implementation 'com.google.firebase:firebase-storage:11.0.4'
-    implementation 'com.google.firebase:firebase-messaging:11.0.4'
-    implementation 'com.firebaseui:firebase-ui:2.3.0'
+    implementation('com.google.firebase:firebase-auth:15.1.0', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation('com.google.firebase:firebase-database:15.0.0', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation('com.google.firebase:firebase-storage:15.0.2', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation('com.google.firebase:firebase-messaging:15.0.2', {
+        exclude group: 'com.google.android.gms'
+    })
+    implementation 'com.firebaseui:firebase-ui:3.3.1'
+
+    //prev version 2.3.0
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     //endpoint
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:design:26.1.0'
-    implementation 'com.google.code.findbugs:jsr305:2.0.1'
+    implementation 'com.google.code.findbugs:jsr305:3.0.1'
     testImplementation 'junit:junit:4.12'
     implementation project(path: ':backend', configuration: 'android-endpoints')
+
     //rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
 
-
-
     //architectue components
+
     //implementation 'android.arch.lifecycle:extensions:1.0.0-beta2'
+
     //implementation 'android.arch.lifecycle:common-java8:1.0.0-beta2'
+
     //testImplementation 'android.arch.core:core-testing:1.0.0-beta2'
+
     //implementation 'android.arch.lifecycle:reactivestreams:1.0.0-beta2'
 
-
     //lifecycles
-    implementation "android.arch.lifecycle:runtime:1.0.3"
-    kapt "android.arch.lifecycle:compiler:1.0.0"
-    implementation "android.arch.lifecycle:common-java8:1.0.0"
+    implementation 'android.arch.lifecycle:runtime:1.1.1'
+    kapt "android.arch.lifecycle:compiler:1.1.1"
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
 
     //livedata viewmodel
-    implementation "android.arch.lifecycle:extensions:1.0.0"
-    testImplementation "android.arch.core:core-testing:1.0.0"
-    implementation "android.arch.lifecycle:reactivestreams:1.0.0"
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
 
     //room
-    implementation "android.arch.persistence.room:runtime:1.0.0"
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
     kapt "android.arch.persistence.room:compiler:1.0.0"
-    testImplementation "android.arch.persistence.room:testing:1.0.0"
-    implementation "android.arch.persistence.room:rxjava2:1.0.0"
-
+    testImplementation 'android.arch.persistence.room:testing:1.0.0'
+    implementation 'android.arch.persistence.room:rxjava2:1.0.0'
 
     //evernote job scheduler
     implementation 'com.evernote:android-job:1.2.0'
+
     //job que
     implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+
     //dagger
     implementation 'com.google.dagger:dagger:2.12'
     kapt 'com.google.dagger:dagger-compiler:2.12'
     implementation 'com.google.dagger:dagger-android:2.12'
     implementation 'com.google.dagger:dagger-android-support:2.12'
     kapt 'com.google.dagger:dagger-android-processor:2.12'
+
     //job que
     implementation 'com.birbit:android-priority-jobqueue:2.0.1'
+
     //green robot
     implementation 'org.greenrobot:eventbus:3.0.0'
+
     //glide
     implementation 'com.github.bumptech.glide:glide:4.2.0'
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
@@ -131,20 +169,26 @@ dependencies {
     implementation project(':device')
     implementation project(':domain')
     implementation 'com.android.support:cardview-v7:26.1.0'
+
     //image picker
     implementation 'com.mlsdev.rximagepicker:library:2.0.2'
+
     //permissions
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+
     //circle image
     implementation 'de.hdodenhof:circleimageview:1.3.0'
+
     //circle menu
     implementation 'com.github.szugyi:Android-CircleMenu:2.0.0'
     implementation 'com.annimon:stream:' + project.ext.streamsVersion
-    implementation 'com.google.android.gms:play-services-location:11.0.4'
+
     //timber logging
     implementation 'com.jakewharton.timber:timber:4.6.0'
+
     //facebook
     implementation 'com.facebook.android:facebook-android-sdk:4.23.0'
+
     //implementation 'com.google.android.gms:play-services-location:11.2.0'
 
     //image compressor
@@ -167,6 +211,13 @@ dependencies {
     implementation 'com.bluelinelabs:conductor-autodispose:2.1.4'
     implementation 'com.bluelinelabs:conductor-archlifecycle:0.1.1'
 
+    //reactive location
+    implementation('pl.charmas.android:android-reactive-location2:2.1@aar', {
+        exclude group: 'com.google.android.gms'
+    })
+
+    //transitions
+    implementation 'com.andkulikov:transitionseverywhere:1.7.9'
 }
 repositories {
     mavenCentral()

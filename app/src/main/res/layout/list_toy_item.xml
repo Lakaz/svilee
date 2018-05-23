@@ -79,6 +79,48 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toy_description" />
 
+        <FrameLayout
+            android:id="@+id/listing_status_layout"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/upload_status_background"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/toy_image"
+            app:layout_constraintTop_toTopOf="@+id/toy_image">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Just"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/item_status_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Added"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.571"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            </android.support.constraint.ConstraintLayout>
+        </FrameLayout>
+
         <ImageView
             android:id="@+id/locationIcon"
             android:layout_width="18dp"
@@ -113,13 +155,41 @@
             app:layout_constraintTop_toBottomOf="@+id/item_description"
             app:srcCompat="@drawable/ic_favorite_border_accent_24dp" />
 
-        <TextView
-            android:id="@+id/distance_tv"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintStart_toEndOf="@+id/receive_btn"
+            app:layout_constraintTop_toBottomOf="@+id/item_description">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                app:srcCompat="@drawable/ic_chat_bubble_outline_accent_24dp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_age_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_description"
             tools:text="2km away" />

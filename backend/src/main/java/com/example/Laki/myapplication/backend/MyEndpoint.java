@@ -15,6 +15,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.GeoPt;
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.search.Document;
@@ -65,8 +66,17 @@ import javax.inject.Named;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 
+import static com.example.Laki.myapplication.backend.Constants.COMMENT;
+import static com.example.Laki.myapplication.backend.Constants.COMMENTED_AVATAR_URL;
+import static com.example.Laki.myapplication.backend.Constants.COMMENTED_NAME;
+import static com.example.Laki.myapplication.backend.Constants.COMMENTED_UUID;
+import static com.example.Laki.myapplication.backend.Constants.COMMENTOR_AVATAR_URL;
+import static com.example.Laki.myapplication.backend.Constants.COMMENTOR_NAME;
+import static com.example.Laki.myapplication.backend.Constants.COMMENT_ID;
+import static com.example.Laki.myapplication.backend.Constants.ENTITY_COMMENT;
 import static com.example.Laki.myapplication.backend.Constants.ENTITY_ITEM;
 import static com.example.Laki.myapplication.backend.Constants.ENTITY_KIND_TOKENS;
+import static com.example.Laki.myapplication.backend.Constants.ENTITY_RANK;
 import static com.example.Laki.myapplication.backend.Constants.ENTITY_REACT_RECEIVED_ITEMS;
 import static com.example.Laki.myapplication.backend.Constants.ENTITY_RECEIVED_ITEMS;
 import static com.example.Laki.myapplication.backend.Constants.GIVER_AVATAR_URL;
@@ -82,6 +92,11 @@ import static com.example.Laki.myapplication.backend.Constants.ITEM_STATUS;
 import static com.example.Laki.myapplication.backend.Constants.LOCATION_KEY;
 import static com.example.Laki.myapplication.backend.Constants.PICK_LOCATION_KEY;
 import static com.example.Laki.myapplication.backend.Constants.PICK_TIME_KEY;
+import static com.example.Laki.myapplication.backend.Constants.RANKED_UUID;
+import static com.example.Laki.myapplication.backend.Constants.RANK_AGGREGATE;
+import static com.example.Laki.myapplication.backend.Constants.RANK_ASSIGNED;
+import static com.example.Laki.myapplication.backend.Constants.RANK_COUNT;
+import static com.example.Laki.myapplication.backend.Constants.RANK_TOTAL;
 import static com.example.Laki.myapplication.backend.Constants.RECEIVER_KEY;
 import static com.example.Laki.myapplication.backend.Constants.RECEIVER_UUID;
 import static com.example.Laki.myapplication.backend.Constants.TIME_POSTED_KEY;
@@ -345,7 +360,126 @@ public class MyEndpoint {
 
 
 
+    @ApiMethod(name = "postComment")
+    public SuccessResponse postComment(
+            @Named("commentId") String commentId,
+            @Named("commentorName") String commentorName,
+            @Named("commentedName") String commentedName,
+            @Named("commentorAvatarUrl") String commentorAvatarUrl,
+            @Named("commentedAvatarUrl") String commentedAvatarUrl,
+            @Named("comment") String thecomment,
+            @Named("commentedUUID") String commentedUUID){
 
+        String timePost = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
+        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+        Entity comment = new Entity(ENTITY_COMMENT);
+        comment.setProperty(COMMENT_ID, commentId);
+        comment.setProperty(COMMENTOR_NAME, commentorName);
+        comment.setProperty(COMMENTED_NAME, commentedName);
+        comment.setProperty(COMMENT, thecomment);
+        comment.setProperty(COMMENTED_AVATAR_URL, commentedAvatarUrl);
+        comment.setProperty(COMMENTOR_AVATAR_URL, commentorAvatarUrl);
+        comment.setProperty(TIME_POSTED_KEY, timePost);
+        comment.setProperty(COMMENTED_UUID, commentedUUID);
+
+        datastoreService.put(comment);
+
+        SuccessResponse response = new SuccessResponse("Success");
+
+        return response;
+
+    }
+
+
+    @ApiMethod(name = "getRanking")
+    public RankInfo getRanking(@Named("userUUID") String userUUID){
+
+        RankInfo rankInfo = new RankInfo();
+        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+        Entity entity = new Entity(ENTITY_RANK);
+
+        Query query = new Query(ENTITY_RANK);
+
+        query.setFilter(new Query.FilterPredicate(RANKED_UUID, Query.FilterOperator.EQUAL, userUUID));
+        PreparedQuery preparedQuery = datastoreService.prepare(query);
+
+        int totalCount = datastoreService.prepare(query).countEntities(FetchOptions.Builder.withDefaults());
+
+        if (totalCount == 0){
+            rankInfo.setCount(Integer.toString(0));
+            rankInfo.setRanking(Integer.toString(0));
+            return rankInfo;
+        }
+
+
+        Iterable<Entity> results = preparedQuery.asIterable();
+
+
+
+        for (Entity result : results) {
+            String count =  result.getProperty(RANK_COUNT).toString();
+            String rank =  result.getProperty(RANK_ASSIGNED).toString();
+
+            rankInfo.setRanking(rank);
+            rankInfo.setCount(count);
+        }
+
+        return rankInfo;
+
+    }
+
+
+    @ApiMethod(name = "postRanking")
+    public SuccessResponse postRanking(
+            @Named("userUUID") String userUUID,
+            @Named("rank") float rank) {
+
+        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+        Entity entity = new Entity(ENTITY_RANK);
+
+        Query query = new Query(ENTITY_RANK);
+
+        query.setFilter(new Query.FilterPredicate(RANKED_UUID, Query.FilterOperator.EQUAL, userUUID));
+        PreparedQuery preparedQuery = datastoreService.prepare(query);
+
+        int totalCount = datastoreService.prepare(query).countEntities(FetchOptions.Builder.withDefaults());
+
+        if (totalCount == 0){
+            entity.setProperty(RANKED_UUID, userUUID);
+            entity.setProperty(RANK_AGGREGATE, rank);
+            entity.setProperty(RANK_ASSIGNED, rank);
+            entity.setProperty(RANK_COUNT, 1);
+            datastoreService.put(entity);
+
+            return new SuccessResponse("success");
+        }
+
+
+        Iterable<Entity> results = preparedQuery.asIterable();
+
+
+
+        for (Entity result : results) {
+            Key key = result.getKey();
+            double total = (double) result.getProperty(RANK_AGGREGATE);
+            double count = (double) result.getProperty(RANK_COUNT);
+            double newTotal = total + rank;
+            double newCount = count + 1;
+            double newRank = newTotal/newCount;
+
+            result.setProperty(RANK_AGGREGATE, newTotal);
+            result.setProperty(RANK_COUNT, newCount);
+            result.setProperty(RANK_ASSIGNED, newRank);
+
+            datastoreService.put(result);
+
+        }
+
+
+        return new SuccessResponse("success");
+
+    }
 
     @ApiMethod(name = "postItem")
     public SuccessResponse postItem(
@@ -669,6 +803,42 @@ public class MyEndpoint {
         }
 
         return successResponse;
+
+    }
+
+    @ApiMethod(name = "getComments")
+    public CollectionResponse<Comment> getComments(
+            @Named("userUUID") String userUUID) {
+
+
+        List<Comment> commentsList = new ArrayList<>(0);
+
+        DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+
+        Query query = new Query(ENTITY_COMMENT);
+
+        query.setFilter(new Query.FilterPredicate(COMMENTED_UUID, Query.FilterOperator.EQUAL, userUUID));
+        PreparedQuery preparedQuery = datastoreService.prepare(query);
+        Iterable<Entity> results = preparedQuery.asIterable();
+
+        for (Entity result : results) {
+            Comment comment = new Comment();
+            comment.setComment(result.getProperty(COMMENT).toString());
+            comment.setCommentedAvatarUrl(result.getProperty(COMMENTED_AVATAR_URL).toString());
+            comment.setCommentorAvatarUrl(result.getProperty(COMMENTOR_AVATAR_URL).toString());
+            comment.setCommentedName(result.getProperty(COMMENTED_NAME).toString());
+            comment.setCommentorName(result.getProperty(COMMENTOR_NAME).toString());
+            comment.setCommentId(result.getProperty(COMMENT_ID).toString());
+            comment.setTimePosted(result.getProperty(TIME_POSTED_KEY).toString());
+            comment.setCommentedUUID(result.getProperty(COMMENTED_UUID).toString());
+
+
+            commentsList.add(comment);
+        }
+
+
+        return CollectionResponse.<Comment> builder().setItems(commentsList).setNextPageToken(Integer.toString(5)).build();
+
 
     }
 

@@ -2,6 +2,7 @@ package com.mobiwarez.domain.domain.repository
 
 import com.mobiwarez.domain.domain.models.Toy
 import io.reactivex.Completable
+import io.reactivex.Observable
 import io.reactivex.Single
 
 /**
@@ -20,6 +21,8 @@ interface ToyRepository {
     fun deleteToy(feedId: Int): Completable
 
     fun getToysFromLocal(): Single<List<Toy>>
+
+    fun claimToy(toyId: String): Observable<String>
 
 /*
     abstract fun pullArticlesForFeedFromOrigin(feed: Feed): Completable
